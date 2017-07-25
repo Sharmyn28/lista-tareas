@@ -23,33 +23,35 @@
 
 	<div align="center">
 		<a class="btn-floating btn-large waves-effect waves-light red">
-			<i class="material-icons">add</i>
+			<i class="material-icons" onclick="addTask()">add</i>
 		</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="btn-floating btn-large waves-effect waves-light red">
-			<i class="material-icons">delete</i>
+			<i class="material-icons" onclick="deleteTask()">delete</i>
 		</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<a class="waves-effect waves-light btn">
-			<i class="material-icons left">cloud</i>enviar</a>
+			<i class="material-icons left" >cloud</i>enviar</a>
 
 	</div>
 	
 	<center>
-		<div class="lista">
+		<!--div class="lista">
+			<p> Tasks:</p>
 			<form action="#">
+			    <p> !--checkbox vacia--
+			      <input type="checkbox" id="test5">
+			      <label for="test5">Red</label></p>	    
 			    <p>
-			      <input type="checkbox" id="test5" />
-			      <label for="test5">Red</label>
-			    </p>
-			    <p>
-			      <input type="checkbox" id="test6" checked="checked" />
+			      <input type="checkbox" id="test6" checked="checked">
 			      <label for="test6">Yellow</label>
 			    </p>
 			    <p>
-			      <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" />
+			      <input type="checkbox" class="filled-in" id="filled-in-box" checked="checked">
 			      <label for="filled-in-box">Filled in</label>
 			    </p>
 			</form>
-		</div>
+		</div-->
+		<p id="it" >Initial Tasks:</p>
+		<div id="lista" class="lista"></div>
 	</center>
 	
 
