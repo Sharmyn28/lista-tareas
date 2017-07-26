@@ -1,18 +1,34 @@
-var o = 0;
+var tasks =[];
+function Task (title, duration){
+	this.title = title;
+	this.duration = duration;
+	this.isCompleted = false;
+
+	this.newTask = function (){
+	//.checkbox(placeholder"Hola");
+		var newT = prompt("Escriba nueva tarea");
+		toHTML(newT);
+		tasks.push(newT);
+	}
+}
+
 
 //array para guardar las tareas
 
-function addTask (mensaje){
+function toHTML (arr){
 	var lista = document.getElementById("lista");
 	var string = "";
 	var style = "";
-	style += "<form action='#''>";
-	style += "<p><input type='checkbox' id='test5'/>";
-	style += "<label for='test5'>"+ mensaje +"</label></p></form>"; 
-	string +="<div id='nuevo'>" +style+"</div>"
-	lista.innerHTML += string;
-	console.log(mensaje);
+	for(var i in arr){
+	   lista.innerHTML += '<form action="#"><p><input type="checkbox" id="'+i+'"> <label for="'+i+'">'+arr[i].title+'</label></p></form>';
+		//string +="<div id='nuevo'>" +style+"</div>"
+		//lista.innerHTML += style;
+	}
+	
+	console.log(arr[i]);
+	return true;
 }
+
 
 
 var initialTask =[
@@ -84,6 +100,4 @@ var initialTask =[
 	  },
 ]
 
-for(var i in initialTask){
-	addTask(initialTask[i].title);
-}
+	toHTML(initialTask);
