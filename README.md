@@ -32,12 +32,13 @@ Proyecto Final Sprint II To Do List
 *Portada de entrada*
 ![Alt-Text](assets/img/completo.png)
 
+
 *Boton Añadir Tarea*
 
-*Fruta añadida*
+*Tarea añadida*
 ![Alt-Text](assets/img/boton1.png)
 ![Alt-Text](assets/img/boton2.png)
 ![Alt-Text](assets/img/boton3.png)
 
-*Frutas agregadas en lista*
+*Nuevas tareas agregadas en lista*
 ![Alt-Text](assets/img/lista.png)
