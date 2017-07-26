@@ -90,18 +90,16 @@ function List(){
 			}
 			return true;
 		}else if (numL == 2){
-			this.limpiar();
+			var str = "";
 			for(var j = 11 ; j < (11 + arr.length); j++){
-				for(var x in arr){   
-		   			listaNueva.innerHTML += '<form action="#"><p><input type="checkbox" id="'+j+'"> <label for="'+j+'">'+arr[x].title+'</label></p></form>';
+				for(var x in arr){ 
+					console.log("/"+arr[x].title);  
+		   			str+= '<form action="#"><p><input type="checkbox" name="lis" id="'+j+'"> <label for="'+j+'" class = "task">'+arr[x].title+'</label></p></form>';
 		   		}
+		   		listaNueva.innerHTML = str;
 		   		return true;
 			}
 		}
-	}
-
-	this.limpiar = function(){
-		document.getElementById("lista nueva").innerHTML = "<strong>"+"Nuevas Tareas:"+ "</strong>";
 	}
 
 	this.newTask = function (){
@@ -150,22 +148,25 @@ function List(){
 				
 //se instancio Task dentro del metodo puesto que por propiedades del uso de la libreria sweetAlert no capturaba el array
 				var newT = new Task(newTT, newTD);
+				
 				list.tasks.push(newT);
-				console.log(list.tasks);
 				list.toHTML(list.tasks,2);
+				console.log(list.tasks);
+				//return newT;
               });             
       });
 	}
 
 	this.completeTask = function (task) {
 		task.classList.toggle('task-complete');
+		//this.tasks.isCompleted = true;
+		//console.log(newT);
 	}
 }
 
 
 var list = new List();
 printInitial();
-//check();
 
 var btnAdd= document.getElementById("btnAdd");
 btnAdd.onclick = function (){

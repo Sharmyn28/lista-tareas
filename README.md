@@ -40,5 +40,9 @@ Proyecto Final Sprint II To Do List
 ![Alt-Text](assets/img/boton2.png)
 ![Alt-Text](assets/img/boton3.png)
 
+
 *Nuevas tareas agregadas en lista*
 ![Alt-Text](assets/img/lista.png)
+
+*Tareas Realizadas
+![Alt-Text](assets/img/tachado.png)
