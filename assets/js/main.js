@@ -90,7 +90,7 @@ function List(){
 		//var arr = this.initialTasks;
 		if(numL == 1){
 			for(var i in arr){
-		   		lista.innerHTML += '<form action="#"><p><input type="checkbox" id="'+i+'"> <label for="'+i+'">'+arr[i].title+'</label></p></form>';
+		   		lista.innerHTML += '<form action="#"><p><input type="checkbox" name="lis" id="'+i+'"> <label for="'+i+'" class = "lis">'+arr[i].title+'</label></p></form>';
 			}
 			return true;
 		}else if (numL == 2){
@@ -110,18 +110,70 @@ function List(){
 	}
 
 	this.newTask = function (){
-	//.checkbox(placeholder"Hola");
-		var newTT = prompt("Escriba nueva tarea");
-		var newTD = prompt("Escriba la duracion de la tarea");
-		newTD = parseInt(newTD);
-		var newT = new Task(newTT, newTD);
-		this.add(newT);
+	
+		//var newTT = prompt("Escriba nueva tarea");
+		//var newTD = prompt("Escriba la duracion de la tarea");
+		
+
+		swal({
+            title: "¿Que tarea desea agregar?",
+            text: "Ingrese una nueva tarea",
+            type: "input",
+            showCancelButton: true,
+            closeOnConfirm: false,
+            animation: "slide-from-top",
+            inputPlaceholder: "Write something"
+        },
+            function(inputValue){
+              if (inputValue === false) return false;
+
+              if (inputValue === "") {
+                  swal.showInputError("Debes ingresar una tarea");
+                  return false
+              }
+            var newTT = inputValue;
+
+                  
+            swal({
+                  title: "¿Cuánto tiempo durara?",
+                  text: "Ingrese la duracion de la tarea",
+                  type: "input",
+                  showCancelButton: true,
+                  closeOnConfirm: false,
+                  animation: "slide-from-top",
+                  inputPlaceholder: "Write something"
+                },
+                  function(inputValue){
+                    if (inputValue === false) return false;
+
+                    if (inputValue === "") {
+                      swal.showInputError("Debes ingresar un número");
+                      return false
+                    }
+                    var newTD = inputValue;
+                  	newTD = parseInt(newTD);
+                       
+                swal("Perfecto", "Escribiste: " + newTT + " "+ newTD, "success");
+				var newT = new Task(newTT, newTD);
+				this.add(newT);                
+                //printHTML(product.toHTML());
+              
+              });              
+      });
+
+
 	}
 
 	this.isDone = function(event){
-		if (event.target.tagName === 'p') {
-      		event.target.classList.toggle('checked');
+		if (event.target.getElementsByClassName == 'lis') {
+      		document.getElementsByTagName("lis").classList.toggle('checked');
     	}
+	}
+
+	this.checked = function(){
+		if(this.isCompleted == true){
+			document.getElementsByTagName("label").classList.toggle('checked');
+		}
 	}
 }
 
@@ -153,7 +205,19 @@ function check() {
   }
 }
 
-/*
-function deleteTask(){
+//*****************EXTRA*************
 
-}*/
+var btnDelete = document.getElementById("btnDelete");
+btnDelete.onclick = function (){
+	var nombre = document.getElementById("nombre").value;
+
+	for(var i in pasajeros){
+		if(pasajeros[i].nombre == nombre){
+			console.log(pasajeros[i]);
+			pasajeros.splice(i,1);
+			reinicia();
+			global.style.backgroundColor = "transparent";
+			//return true;
+		}		
+	}
+};

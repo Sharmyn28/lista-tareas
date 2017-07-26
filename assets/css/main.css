@@ -22,8 +22,10 @@ button{
 	font-weight: bold;
 }
 
-.checked {
+ 
+.checked{
   background: #00796b;
   color:aliceblue;
   text-decoration: line-through;
 }
+ 
