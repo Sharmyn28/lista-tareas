@@ -9,7 +9,7 @@ Proyecto Final Sprint II To Do List
 + Se 3 botones con estilos de la libreria Materialize
 + Se agrego un div *lista* en el cual se mostrara el conjunto de tareas
 + Se agrego un segundo div *sin id* para seccionar los botones
-+ Un tercer div *registro* para el formulario de reserva
++ Un tercer div *lista nueva* en el que se mostrar las nuevas tareas
 
 
 **2. CSS**
@@ -22,20 +22,22 @@ Proyecto Final Sprint II To Do List
 
 
 **3. JAVASCRIPT**
-+ Bajo el modelo anteriormente creado para el proyecto de compra.
-+ Se agrego un prompt bajo diseño de sweetalert el cual permite el ingreso de datos de frutas de forma más llamativa.
-+ Se inicia declarando una lista en el cual se guardaron los datos referentes a las frutas.
++ Se creo un array que contuviera los datos inicialmente presentados.
++ Se agregaron elementos de la lista mediante JS.
++ Se crearon dos objetos para la captura y reserva de datos.
 + Se usaron funciones para la captura de datos e impresión de los mismos.
++ Se hizo uso de funciones sweetAlert
 
 ## Resultado
 *Portada de entrada*
-![Alt-Text](capture.png)
+![Alt-Text](assets/img/completo.png)
 
-*Boton Añadir nueva fruta*
+*Boton Añadir Tarea*
 
 *Fruta añadida*
-![Alt-Text](boton.png)
-![Alt-Text](boton2.png)
+![Alt-Text](assets/img/boton1.png)
+![Alt-Text](assets/img/boton2.png)
+![Alt-Text](assets/img/boton3.png)
 
 *Frutas agregadas en lista*
-![Alt-Text](lista.png)
+![Alt-Text](assets/img/lista.png)

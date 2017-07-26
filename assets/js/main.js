@@ -153,15 +153,15 @@ function List(){
                     var newTD = inputValue;
                   	newTD = parseInt(newTD);
                        
-                swal("Perfecto", "Escribiste: " + newTT + " "+ newTD, "success");
+                swal("Perfecto", "Escribiste: " + newTT + ", "+ newTD + " minutos", "success");
 				var newT = new Task(newTT, newTD);
-				this.add(newT);                
+				tasks.push(newT);
+				console.log(tasks);
+				//this.list.toHTML(newT,2);
+				//this.add(newT);                
                 //printHTML(product.toHTML());
-              
-              });              
+              });             
       });
-
-
 	}
 
 	this.isDone = function(event){
