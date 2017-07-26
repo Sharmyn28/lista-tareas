@@ -84,25 +84,25 @@ function List(){
 	this.toHTML = function (arr, numL){
 		var lista = document.getElementById("lista");
 		var listaNueva = document.getElementById("lista nueva");
-		var string = "";
-		var style = "";
-		
-		//var arr = this.initialTasks;
+
 		if(numL == 1){
 			for(var i in arr){
 		   		lista.innerHTML += '<form action="#"><p><input type="checkbox" name="lis" id="'+i+'"> <label for="'+i+'" class = "lis">'+arr[i].title+'</label></p></form>';
 			}
 			return true;
 		}else if (numL == 2){
+
 			this.limpiar();
+
 			for(var j = 11 ; j < (11 + arr.length); j++){
-				for(var x in arr)
-		   		listaNueva.innerHTML += '<form action="#"><p><input type="checkbox" id="'+j+'"> <label for="'+j+'">'+arr[x].title+'</label></p></form>';
+
+				for(var x in arr){   
+		   			listaNueva.innerHTML += '<form action="#"><p><input type="checkbox" id="'+j+'"> <label for="'+j+'">'+arr[x].title+'</label></p></form>';
+		   			
+		   		}
 		   		return true;
 			}
 		}
-		
-		
 	}
 
 	this.limpiar = function(){
@@ -113,8 +113,7 @@ function List(){
 	
 		//var newTT = prompt("Escriba nueva tarea");
 		//var newTD = prompt("Escriba la duracion de la tarea");
-		
-
+		console.log(this.tasks);
 		swal({
             title: "¿Que tarea desea agregar?",
             text: "Ingrese una nueva tarea",
@@ -123,7 +122,7 @@ function List(){
             closeOnConfirm: false,
             animation: "slide-from-top",
             inputPlaceholder: "Write something"
-        },
+        	},
             function(inputValue){
               if (inputValue === false) return false;
 
@@ -132,8 +131,7 @@ function List(){
                   return false
               }
             var newTT = inputValue;
-
-                  
+    
             swal({
                   title: "¿Cuánto tiempo durara?",
                   text: "Ingrese la duracion de la tarea",
@@ -155,11 +153,10 @@ function List(){
                        
                 swal("Perfecto", "Escribiste: " + newTT + ", "+ newTD + " minutos", "success");
 				var newT = new Task(newTT, newTD);
-				tasks.push(newT);
-				console.log(tasks);
-				//this.list.toHTML(newT,2);
-				//this.add(newT);                
-                //printHTML(product.toHTML());
+				
+				list.tasks.push(newT);
+				console.log(list.tasks);
+				list.toHTML(list.tasks,2);
               });             
       });
 	}
@@ -184,10 +181,7 @@ check();
 
 var btnAdd= document.getElementById("btnAdd");
 btnAdd.onclick = function (){
-	var newT = list.tasks;
 	list.newTask();
-	list.toHTML(newT,2);
-	//console.log(task);
 };
 
 function printInitial (){
