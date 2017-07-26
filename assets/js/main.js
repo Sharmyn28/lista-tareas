@@ -78,7 +78,6 @@ function List(){
 
 	this.add = function(task){
 		this.tasks.push(task);
-		//this.initialTasks.push(task);
 	}
 
 	this.toHTML = function (arr, numL){
@@ -87,18 +86,14 @@ function List(){
 
 		if(numL == 1){
 			for(var i in arr){
-		   		lista.innerHTML += '<form action="#"><p><input type="checkbox" name="lis" id="'+i+'"> <label for="'+i+'" class = "lis">'+arr[i].title+'</label></p></form>';
+		   		lista.innerHTML += '<form action="#"><p><input type="checkbox" name="lis" id="'+i+'"> <label for="'+i+'" class = "task">'+arr[i].title+'</label></p></form>';
 			}
 			return true;
 		}else if (numL == 2){
-
 			this.limpiar();
-
 			for(var j = 11 ; j < (11 + arr.length); j++){
-
 				for(var x in arr){   
 		   			listaNueva.innerHTML += '<form action="#"><p><input type="checkbox" id="'+j+'"> <label for="'+j+'">'+arr[x].title+'</label></p></form>';
-		   			
 		   		}
 		   		return true;
 			}
@@ -152,8 +147,9 @@ function List(){
                   	newTD = parseInt(newTD);
                        
                 swal("Perfecto", "Escribiste: " + newTT + ", "+ newTD + " minutos", "success");
-				var newT = new Task(newTT, newTD);
 				
+//se instancio Task dentro del metodo puesto que por propiedades del uso de la libreria sweetAlert no capturaba el array
+				var newT = new Task(newTT, newTD);
 				list.tasks.push(newT);
 				console.log(list.tasks);
 				list.toHTML(list.tasks,2);
@@ -161,23 +157,15 @@ function List(){
       });
 	}
 
-	this.isDone = function(event){
-		if (event.target.getElementsByClassName == 'lis') {
-      		document.getElementsByTagName("lis").classList.toggle('checked');
-    	}
-	}
-
-	this.checked = function(){
-		if(this.isCompleted == true){
-			document.getElementsByTagName("label").classList.toggle('checked');
-		}
+	this.completeTask = function (task) {
+		task.classList.toggle('task-complete');
 	}
 }
 
 
 var list = new List();
 printInitial();
-check();
+//check();
 
 var btnAdd= document.getElementById("btnAdd");
 btnAdd.onclick = function (){
@@ -190,14 +178,18 @@ function printInitial (){
 }
 
 
-function check() {
-  var actv = document.getElementsByTagName("p");
-  for (var i in actv) {
-    actv[i].onclick = function (event) {
-      list.isDone(event);
-    }
-  }
-}
+document.addEventListener('click', function(e) {
+	// Remove task
+	if ( e.target.classList.contains('remove-task') ) {
+		list.removeTask(e.target);
+
+	// Complete Task
+	} else if ( e.target.classList.contains('task') ) {
+		list.completeTask(e.target);
+
+	}
+}, false);
+
 
 //*****************EXTRA*************
 
@@ -215,3 +207,19 @@ btnDelete.onclick = function (){
 		}		
 	}
 };
+
+/*
+var arrFrases = [
+	["By working faithfully eight hours a day you may eventually get to be boss and work twelve hours a day. Robert Frost"],
+	["There are no shortcuts to any place worth going. Beverly Sills" ],
+	["I’d rather live with a good question than a bad answer"],
+	["Life’s tragedy is that we get old too soon and wise too late.Benjamin Franklin"],
+	["The secret of business is to know something nobody else knows. Aristotle Onassis"],
+	["Nothing great was ever achieved without enthusiasm.– Ralph Waldo Emerson"],
+	["Success is getting what you want. Happiness is wanting what you get.– B.R. Hayden"],
+	["Advice is what we ask for when we already know the answer but wish we didn’t.– Erica Jong"],
+	["You will never win if you never begin - Helen Rowland"],
+	["Nature is something outside our body, but the mind is within us. -Bhumibol Adulyadej"],
+	["We are nearer loving those who hate us than those who love us more than we wish. -Francois de La Rochefoucauld"],
+	["Travel becomes a strategy for accumulating photographs. -Susan Sontag"],
+];*/

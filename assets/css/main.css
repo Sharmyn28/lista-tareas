@@ -23,7 +23,7 @@ button{
 }
 
  
-.checked{
+.task-complete{
   background: #00796b;
   color:aliceblue;
   text-decoration: line-through;
