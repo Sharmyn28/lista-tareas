@@ -1,37 +1,17 @@
-var tasks =[];
+
 function Task (title, duration){
 	this.title = title;
 	this.duration = duration;
 	this.isCompleted = false;
-
-	this.newTask = function (){
-	//.checkbox(placeholder"Hola");
-		var newT = prompt("Escriba nueva tarea");
-		toHTML(newT);
-		tasks.push(newT);
 	}
-}
 
-
-//array para guardar las tareas
-
-function toHTML (arr){
-	var lista = document.getElementById("lista");
-	var string = "";
-	var style = "";
-	for(var i in arr){
-	   lista.innerHTML += '<form action="#"><p><input type="checkbox" id="'+i+'"> <label for="'+i+'">'+arr[i].title+'</label></p></form>';
-		//string +="<div id='nuevo'>" +style+"</div>"
-		//lista.innerHTML += style;
-	}
-	
-	console.log(arr[i]);
-	return true;
 }
 
 
 
-var initialTask =[
+function List(){
+	this.tasks =[];
+	this.initialTasks =[
 	  {
 	    "userId": 1,
 	    "id": 1,
@@ -98,6 +78,36 @@ var initialTask =[
 	    "title": "Vero rerum temporibus dolor",
 	    "completed": true
 	  },
-]
+	]
 
-	toHTML(initialTask);
+	this.toHTML = function (arr){
+		var lista = document.getElementById("lista");
+		var string = "";
+		var style = "";
+		for(var i in arr){
+		   lista.innerHTML += '<form action="#"><p><input type="checkbox" id="'+i+'"> <label for="'+i+'">'+arr[i].title+'</label></p></form>';
+			//string +="<div id='nuevo'>" +style+"</div>"
+			//lista.innerHTML += style;
+		}
+		return true;
+	}
+
+	this.newTask = function (){
+	//.checkbox(placeholder"Hola");
+		var newT = prompt("Escriba nueva tarea");
+		this.toHTML(newT);
+		this.tasks.push(newT);
+
+	
+}
+
+var task = new Task();
+
+toHTML(initialTask);
+
+
+var btnAd= document.getElementById("btnAdd");
+btnAd.onclick = function (){
+	task.newTask();
+	console.log(task);
+};
