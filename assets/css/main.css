@@ -21,3 +21,9 @@ button{
 	font-size: 25px;
 	font-weight: bold;
 }
+
+.checked {
+  background: #00796b;
+  color:aliceblue;
+  text-decoration: line-through;
+}

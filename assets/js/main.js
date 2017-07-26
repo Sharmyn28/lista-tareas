@@ -3,11 +3,7 @@ function Task (title, duration){
 	this.title = title;
 	this.duration = duration;
 	this.isCompleted = false;
-	}
-
 }
-
-
 
 function List(){
 	this.tasks =[];
@@ -80,34 +76,84 @@ function List(){
 	  },
 	]
 
-	this.toHTML = function (arr){
+	this.add = function(task){
+		this.tasks.push(task);
+		//this.initialTasks.push(task);
+	}
+
+	this.toHTML = function (arr, numL){
 		var lista = document.getElementById("lista");
+		var listaNueva = document.getElementById("lista nueva");
 		var string = "";
 		var style = "";
-		for(var i in arr){
-		   lista.innerHTML += '<form action="#"><p><input type="checkbox" id="'+i+'"> <label for="'+i+'">'+arr[i].title+'</label></p></form>';
-			//string +="<div id='nuevo'>" +style+"</div>"
-			//lista.innerHTML += style;
+		
+		//var arr = this.initialTasks;
+		if(numL == 1){
+			for(var i in arr){
+		   		lista.innerHTML += '<form action="#"><p><input type="checkbox" id="'+i+'"> <label for="'+i+'">'+arr[i].title+'</label></p></form>';
+			}
+			return true;
+		}else if (numL == 2){
+			this.limpiar();
+			for(var j = 11 ; j < (11 + arr.length); j++){
+				for(var x in arr)
+		   		listaNueva.innerHTML += '<form action="#"><p><input type="checkbox" id="'+j+'"> <label for="'+j+'">'+arr[x].title+'</label></p></form>';
+		   		return true;
+			}
 		}
-		return true;
+		
+		
+	}
+
+	this.limpiar = function(){
+		document.getElementById("lista nueva").innerHTML = "<strong>"+"Nuevas Tareas:"+ "</strong>";
 	}
 
 	this.newTask = function (){
 	//.checkbox(placeholder"Hola");
-		var newT = prompt("Escriba nueva tarea");
-		this.toHTML(newT);
-		this.tasks.push(newT);
+		var newTT = prompt("Escriba nueva tarea");
+		var newTD = prompt("Escriba la duracion de la tarea");
+		newTD = parseInt(newTD);
+		var newT = new Task(newTT, newTD);
+		this.add(newT);
+	}
 
-	
+	this.isDone = function(event){
+		if (event.target.tagName === 'p') {
+      		event.target.classList.toggle('checked');
+    	}
+	}
 }
 
-var task = new Task();
 
-toHTML(initialTask);
+var list = new List();
+printInitial();
+check();
 
-
-var btnAd= document.getElementById("btnAdd");
-btnAd.onclick = function (){
-	task.newTask();
-	console.log(task);
+var btnAdd= document.getElementById("btnAdd");
+btnAdd.onclick = function (){
+	var newT = list.tasks;
+	list.newTask();
+	list.toHTML(newT,2);
+	//console.log(task);
 };
+
+function printInitial (){
+	var initial = list.initialTasks;
+	list.toHTML(initial,1);
+}
+
+
+function check() {
+  var actv = document.getElementsByTagName("p");
+  for (var i in actv) {
+    actv[i].onclick = function (event) {
+      list.isDone(event);
+    }
+  }
+}
+
+/*
+function deleteTask(){
+
+}*/
